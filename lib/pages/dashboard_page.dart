@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../models/produk.dart';
 import '../helpers/database_helper.dart';
 import 'form_produk_page.dart';
+import 'kelola_pelanggan_page.dart';
 
 // Halaman Beranda dan Katalog Kasir SmartKasir
 class DashboardPage extends StatefulWidget {
@@ -550,7 +551,103 @@ class _DashboardPageState extends State<DashboardPage> {
               ],
             ),
           ),
-
+// BARIS AKSI PINTAS CEPAT: KELOLA PELANGGAN & TAMBAH PRODUK
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 16),
+  child: Row(
+    children: [
+      Expanded(
+        child: InkWell(
+          onTap: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const KelolaPelangganPage(),
+              ),
+            );
+            _muatDataProduk();
+          },
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 12,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: const Color(0xFFCBD5E1)),
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.people_alt_outlined,
+                  size: 18,
+                  color: Color(0xFF1E3A8A),
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'Kelola Pelanggan',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1E3A8A),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(width: 10),
+      Expanded(
+        child: InkWell(
+          onTap: () async {
+            final refresh = await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FormProdukPage(),
+              ),
+            );
+            if (refresh == true) _muatDataProduk();
+          },
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 12,
+            ),
+            decoration: BoxDecoration(
+              color: const Color(0xFF1E3A8A),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.add_box_outlined,
+                  size: 18,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'Tambah Produk',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+const SizedBox(height: 12),
           // 2. Kotak pencarian cepat (SQL LIKE)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

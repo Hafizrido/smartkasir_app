@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 // Mengimpor halaman kelola karyawan
 import 'kelola_karyawan_page.dart';
+import 'kelola_pelanggan_page.dart';
 
 // Halaman Pengaturan Profil Toko & Footer Struk Kasir
 class ProfilTokoPage extends StatefulWidget {
@@ -225,7 +226,60 @@ class _ProfilTokoPageState extends State<ProfilTokoPage> {
             ),
 
             const SizedBox(height: 20),
+// MENU MANAJEMEN DATA PELANGGAN & MEMBER
+Container(
+  decoration: BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(14),
+    border: Border.all(color: const Color(0xFFE2E8F0)),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withValues(alpha: 0.05),
+        blurRadius: 6,
+        offset: const Offset(0, 2),
+      ),
+    ],
+  ),
+  child: ListTile(
+    leading: const CircleAvatar(
+      radius: 20,
+      backgroundColor: Color(0xFF0D9488),
+      child: Icon(
+        Icons.people_alt,
+        color: Colors.white,
+        size: 20,
+      ),
+    ),
+    title: const Text(
+      'Data Pelanggan & Lokasi GPS',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 14,
+      ),
+    ),
+    subtitle: const Text(
+      'Kelola member CRM dan navigasi rute pengantaran',
+      style: TextStyle(
+        fontSize: 12,
+        color: Colors.grey,
+      ),
+    ),
+    trailing: const Icon(
+      Icons.chevron_right,
+      color: Color(0xFF1E3A8A),
+    ),
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const KelolaPelangganPage(),
+        ),
+      );
+    },
+  ),
+),
 
+const SizedBox(height: 20),
             // Form identitas usaha
             const Text(
               'IDENTITAS USAHA & STRUK KASIR',
